@@ -31,6 +31,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *scoreTitle;
 @property (weak, nonatomic) IBOutlet UILabel *levelTitle;
 
+@property (weak, nonatomic) IBOutlet UIView *timeOutLabel;
+
+
 @property (weak, nonatomic) IBOutlet UIButton *facebookButton;
 @property (weak, nonatomic) IBOutlet UIButton *twitterButton;
 
@@ -191,6 +194,7 @@
     self.levelTitle.hidden = YES;
     self.targetLabel.hidden = YES;
     self.timeLabel.hidden = YES;
+    self.timeOutLabel.hidden = YES;
     
     self.facebookButton.hidden = YES;
     self.twitterButton.hidden = YES;
@@ -202,12 +206,11 @@
     self.levelSelectBackground.image = [UIImage imageNamed:@"Background"];
     
     //bring components of intro screen forward
-    [self.view bringSubviewToFront:self.playButton];
-    [self.view bringSubviewToFront:self.howToButton];
     [self.view bringSubviewToFront:self.SuperLabel];
     [self.view bringSubviewToFront:self.ShapeLabel];
     [self.view bringSubviewToFront:self.ShifterLabel];
-    
+    [self.view bringSubviewToFront:self.playButton];
+    [self.view bringSubviewToFront:self.howToButton];
 }
 
 - (void)shuffle {
@@ -234,6 +237,7 @@
     self.userScoreLabel.hidden = YES;
     self.highScoreLabel.hidden = YES;
     self.retryButton.hidden = YES;
+    self.timeOutLabel.hidden = YES;
     
     self.gameOverPanel.hidden = YES;
     
@@ -371,11 +375,14 @@
         self.highScoreLabel.hidden = NO;
         self.endTimeLabel.hidden = NO;
         self.retryButton.hidden = NO;
+        self.timeOutLabel.hidden = NO;
+        
         [self.view bringSubviewToFront:self.gameOverPanel];
         [self.view bringSubviewToFront:self.endTimeLabel];
         [self.view bringSubviewToFront:self.userScoreLabel];
         [self.view bringSubviewToFront:self.highScoreLabel];
         [self.view bringSubviewToFront:self.retryButton];
+        [self.view bringSubviewToFront:self.timeOutLabel];
 
         self.timeLabel.text = @"Time!";
        [_timer invalidate];
@@ -419,6 +426,7 @@
 -(void)showSettingsMessage{
     self.settingsPanel.hidden = NO;
     self.scene.userInteractionEnabled = NO;
+    [self.view bringSubviewToFront:self.settingsPanel];
 }
 
 - (IBAction)closeInfo:(id)sender {
@@ -432,8 +440,6 @@
 - (void)hideInfoMessage {
     self.infoPanel.hidden = YES;
     self.scene.userInteractionEnabled = YES;
-    
-    self.settingsPanel.hidden = YES;
 }
 
 - (void)hideSettingsMessage {
@@ -478,6 +484,7 @@
     self.retryButton.hidden = YES;
     self.facebookButton.hidden = YES;
     self.twitterButton.hidden = YES;
+    self.timeOutLabel.hidden = YES;
     
     //load first level configuration
     self.level = [[Level alloc] initWithFile:@"Level_1"];

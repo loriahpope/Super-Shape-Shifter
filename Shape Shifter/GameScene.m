@@ -40,10 +40,10 @@ SKLabelNode* _currentLevel;
 //Configures score and level text
 -(void)setupHUD
 {
-    self.score = [[SKLabelNode alloc] initWithFontNamed:@"Futura-Medium"];
-    self.score.fontSize = 17.0;
+    self.score = [[SKLabelNode alloc] initWithFontNamed:@"Chalkduster"];
+    self.score.fontSize = 16.0;
     self.score.position = CGPointMake(-1, -261);
-    self.score.fontColor = [SKColor whiteColor];
+    self.score.fontColor = [SKColor orangeColor];
     [self addChild:_score];
     
     /* This will be shown in future implementation of the game that allows for level functionality
@@ -187,7 +187,7 @@ SKLabelNode* _currentLevel;
         CGPoint centerPosition = CGPointMake(shape.sprite.position.x, shape.sprite.position.y);
         
         // Add a label for the score that slowly floats up.
-        SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Futura-Medium"];
+        SKLabelNode *scoreLabel = [SKLabelNode labelNodeWithFontNamed:@"Chalkduster"];
         scoreLabel.fontSize = 10;
         
         if (shape != nil) {
@@ -326,7 +326,7 @@ SKLabelNode* _currentLevel;
         
         //Animation for floating score on tap
         scoreLabel.position = centerPosition;
-        scoreLabel.fontColor = [SKColor blackColor];
+        scoreLabel.fontColor = [SKColor orangeColor];
         scoreLabel.zPosition = 300;
         [self.shapesLayer addChild:scoreLabel];
         
